@@ -4,3 +4,8 @@ psycopg2-binary # PostgreSQL database adapter
 python-dotenv # Environment variable management
 reportlab # PDF generation
 openpyxl # Excel file handling
+djangorestframework
+django-environ
+supabase
+psycopg2-binary
+dj-database-url
