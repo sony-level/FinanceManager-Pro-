@@ -31,7 +31,7 @@ SECRET_KEY = 'django-insecure-zsmihv^!2019csgnew0$#x%w6dzbho%)8n87^6#7$2y_)v!j7=
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-AUTH_USER_MODEL = "core.User"
+AUTH_USER_MODEL = "users.User"
 
 ALLOWED_HOSTS = []
 
@@ -45,9 +45,17 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    
+    # Third-party
     'rest_framework',
     'drf_spectacular',
-    'core',
+    
+    # Local apps
+    'apps.users',
+    'apps.companies',
+    'apps.invoices',
+    'apps.treasury',
+    'apps.audit',
 ]
 
 MIDDLEWARE = [
@@ -143,7 +151,7 @@ SUPABASE_JWT_SECRET = os.getenv('SUPABASE_JWT_SECRET', '')
 # REST Framework Configuration
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [
-        'core.authentication.SupabaseJWTAuthentication',
+        'apps.authentication.backends.SupabaseJWTAuthentication',
     ],
     'DEFAULT_PERMISSION_CLASSES': [
         'rest_framework.permissions.IsAuthenticated',
@@ -161,5 +169,9 @@ SPECTACULAR_SETTINGS = {
     'TAGS': [
         {'name': 'Auth', 'description': 'Authentification Supabase (register, login, Google OAuth)'},
         {'name': 'User', 'description': 'Gestion utilisateur'},
+        {'name': 'Companies', 'description': 'Gestion des entreprises (PME)'},
+        {'name': 'Invoices', 'description': 'Facturation'},
+        {'name': 'Customers', 'description': 'Gestion des clients'},
+        {'name': 'Treasury', 'description': 'Trésorerie et rapprochements'},
     ],
 }
