@@ -13,9 +13,10 @@ on:
 
 env:
   PROJECT_ID: ${{ secrets.GCP_PROJECT_ID }}
-  REGION: europe-west1
-  SERVICE_NAME: financemanager-pro
-  REGISTRY: europe-west1-docker.pkg.dev
+  REGION: ${{ secrets.GCP_REGION }}
+  SERVICE_NAME: ${{ secrets.GCP_SERVICE_NAME }}
+  REGISTRY: ${{ secrets.GCP_REGION }}-docker.pkg.dev
+  SERVICE_PORT: ${{ secrets.SERVICE_PORT }}
 
 jobs:
   lint:
@@ -251,18 +252,18 @@ jobs:
             --region ${{ env.REGION }} \
             --platform managed \
             --allow-unauthenticated \
-            --port 8080 \
+            --port ${{ env.SERVICE_PORT }} \
             --memory 512Mi \
             --cpu 1 \
             --min-instances 0 \
             --max-instances 10 \
             --set-env-vars "DEBUG=False" \
             --set-env-vars "ALLOWED_HOSTS=*" \
-            --set-secrets "SECRET_KEY=django-secret-key:latest" \
-            --set-secrets "DATABASE_URL=database-url:latest" \
-            --set-secrets "SUPABASE_URL=supabase-url:latest" \
-            --set-secrets "SUPABASE_KEY=supabase-key:latest" \
-            --set-secrets "SUPABASE_JWT_SECRET=supabase-jwt-secret:latest"
+            --set-secrets "SECRET_KEY=${{ secrets.DJANGO_SECRET_KEY }}:latest" \
+            --set-secrets "DATABASE_URL=${{ secrets.DATABASE_URL }}:latest" \
+            --set-secrets "SUPABASE_URL=${{ secrets.SUPABASE_URL }}:latest" \
+            --set-secrets "SUPABASE_KEY=${{ secrets.SUPABASE_KEY }}:latest" \
+            --set-secrets "SUPABASE_JWT_SECRET=${{ secrets.SUPABASE_JWT_SECRET }}:latest"
 
       - name: Get Cloud Run URL
         run: |
