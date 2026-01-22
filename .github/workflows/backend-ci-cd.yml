@@ -29,11 +29,10 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Set up Python 3.13
+      - name: Set up Python 3.15
         uses: actions/setup-python@v5
         with:
-          python-version: "3.13"
-          cache: "pip"
+          python-version: "3.15"          cache: "pip"
           cache-dependency-path: backend/requirements.txt
 
       - name: Install linting tools
@@ -92,7 +91,7 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           commit-message: "style: auto-format code with ruff, black, isort"
-          title: "🎨 Auto-format: Code style fixes"
+          title: "Auto-format: Code style fixes"
           body: |
             ## Automatic Code Formatting
 
@@ -269,7 +268,7 @@ jobs:
           SERVICE_URL=$(gcloud run services describe ${{ env.SERVICE_NAME }} \
             --region ${{ env.REGION }} \
             --format 'value(status.url)')
-          echo "🚀 Deployed to: ${SERVICE_URL}"
+          echo "Deployed to: ${SERVICE_URL}"
           echo "SERVICE_URL=${SERVICE_URL}" >> $GITHUB_ENV
 
       - name: Health check
