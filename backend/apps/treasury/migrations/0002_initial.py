@@ -10,26 +10,38 @@ class Migration(migrations.Migration):
     initial = True
 
     dependencies = [
-        ('treasury', '0001_initial'),
+        ("treasury", "0001_initial"),
         migrations.swappable_dependency(settings.AUTH_USER_MODEL),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='reconciliation',
-            name='matched_by',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.PROTECT, related_name='reconciliations', to=settings.AUTH_USER_MODEL),
+            model_name="reconciliation",
+            name="matched_by",
+            field=models.ForeignKey(
+                on_delete=django.db.models.deletion.PROTECT,
+                related_name="reconciliations",
+                to=settings.AUTH_USER_MODEL,
+            ),
         ),
         migrations.AddIndex(
-            model_name='banktransaction',
-            index=models.Index(fields=['entreprise', 'date'], name='treasury_ba_entrepr_502e36_idx'),
+            model_name="banktransaction",
+            index=models.Index(
+                fields=["entreprise", "date"], name="treasury_ba_entrepr_502e36_idx"
+            ),
         ),
         migrations.AddIndex(
-            model_name='reconciliation',
-            index=models.Index(fields=['entreprise', 'matched_at'], name='treasury_re_entrepr_98d060_idx'),
+            model_name="reconciliation",
+            index=models.Index(
+                fields=["entreprise", "matched_at"],
+                name="treasury_re_entrepr_98d060_idx",
+            ),
         ),
         migrations.AddConstraint(
-            model_name='reconciliation',
-            constraint=models.UniqueConstraint(fields=('entreprise', 'invoice', 'bank_transaction'), name='uniq_reco_per_tenant_invoice_tx'),
+            model_name="reconciliation",
+            constraint=models.UniqueConstraint(
+                fields=("entreprise", "invoice", "bank_transaction"),
+                name="uniq_reco_per_tenant_invoice_tx",
+            ),
         ),
     ]
