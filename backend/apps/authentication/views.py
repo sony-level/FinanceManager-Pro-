@@ -1,7 +1,8 @@
 import requests
 from django.conf import settings
 from drf_spectacular.types import OpenApiTypes
-from drf_spectacular.utils import OpenApiExample, OpenApiParameter, extend_schema
+from drf_spectacular.utils import (OpenApiExample, OpenApiParameter,
+                                   extend_schema)
 from rest_framework import status
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import AllowAny, IsAuthenticated
@@ -9,13 +10,10 @@ from rest_framework.response import Response
 
 from apps.common.serializers import ErrorSerializer
 
-from .serializers import (
-    AuthCredentialsSerializer,
-    AuthTokenResponseSerializer,
-    GoogleAuthResponseSerializer,
-    LogoutResponseSerializer,
-    RefreshTokenSerializer,
-)
+from .serializers import (AuthCredentialsSerializer,
+                          AuthTokenResponseSerializer,
+                          GoogleAuthResponseSerializer,
+                          LogoutResponseSerializer, RefreshTokenSerializer)
 
 
 @extend_schema(
