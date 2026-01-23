@@ -225,6 +225,20 @@ Ce projet est sous licence MIT. Voir le fichier [LICENSE](LICENSE) pour plus de 
         <sub><b>sony-level</b></sub>
       </a>
     </td>
+    <td align="center">
+      <a href="https://github.com/tatoo-flo">
+        <img src="https://github.com/tatoo-flo.png" width="80px;" alt="tatoo-flo"/>
+        <br />
+        <sub><b>tatoo-flo</b></sub>
+      </a>
+    </td>
+    <td align="center">
+      <a href="https://github.com/stiv-dotcom>
+        <img src="https://github.com/stiv-dotcom.png" width="80px;" alt="stiv-dotcom"/>
+        <br />
+        <sub><b>stiv-dotcom</b></sub>
+      </a>
+    </td>
     <!-- Ajouter d'autres collaborateurs ici -->
   </tr>
 </table>
