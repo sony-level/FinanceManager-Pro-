@@ -137,7 +137,7 @@ jobs:
           --health-retries 5
 
     env:
-      DATABASE_URL: postgres://postgres:postgres@localhost:5432/test_db
+      DATABASE_URL: postgres://postgres:postgres@localhost:5432/test_db?sslmode=require
       DJANGO_SETTINGS_MODULE: config.settings
       SECRET_KEY: test-secret-key-for-ci
       DEBUG: "False"
