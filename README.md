@@ -13,7 +13,7 @@ API de gestion financière pour PME avec authentification Supabase.
 
 ```bash
 # Clone the repository
-git clone https://github.com/your-username/FinanceManager-Pro-.git
+git clone https://github.com/flo0700/FinanceManager-Pro-.git
 cd FinanceManager-Pro-/backend
 
 # Create virtual environment
